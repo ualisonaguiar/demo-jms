@@ -4,21 +4,25 @@ plugins {
 	id 'java'
 }
 
-group = 'br.estudo.jms'
+group = 'br.estudo'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
+
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+}
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-    testCompile 'junit:junit:4.12'
-    implementation 'junit:junit:4.12'
-    
-    
 	implementation 'org.springframework.boot:spring-boot-starter-amqp'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
