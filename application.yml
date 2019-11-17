@@ -5,7 +5,7 @@ rabbitmq:
   password: guest
 
 queue:
-  recebe: cep_SP
+  recebe: recebe-cep
   carga: salva_cep_banco
   falha: falha-cep-nao-encontrado
   processar: cep_SP
