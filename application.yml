@@ -1,0 +1,14 @@
+rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
+
+queue:
+  recebe: cep_SP
+  carga: salva_cep_banco
+  falha: falha-cep-nao-encontrado
+  processar: cep_SP
+
+webservice:
+  correio: https://viacep.com.br/ws
