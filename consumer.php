@@ -44,7 +44,7 @@ function enviaFilaFalha($strMessage)
 {
     $arrCongiYaml = Yaml::parse(file_get_contents('application.yml'));
     $sendRabbitMQ = new SendRabbitMQ();
-    $sendRabbitMQ->send($arrCongiYaml['queue']['recebe'], $strMessage);
+    $sendRabbitMQ->send($arrCongiYaml['queue']['falha'], $strMessage);
 }
 
 function enviaFilaCarga($strMessage)
