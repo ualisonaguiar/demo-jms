@@ -6,6 +6,7 @@
  * Time: 23:57
  */
 require_once __DIR__ . '/vendor/autoload.php';
+require_once 'SendRabbitMQ.php';
 
 use Symfony\Component\Yaml\Yaml;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
@@ -25,7 +26,11 @@ $channel->queue_declare($arrQueue['processar'], true, true);
 
 $channel->basic_consume($arrQueue['processar'], '', false, true, false, false, function ($strMessage) {
     $strInfoCEP = consultaCEP($strMessage->body);
-    print_r($strInfoCEP);
+    if (empty($strInfoCEP)) {
+        enviaFilaFalha($strMessage->body);
+    } else {
+        enviaFilaCarga($strInfoCEP);
+    }
 });
 
 while (count($channel->callbacks)) {
@@ -35,10 +40,24 @@ while (count($channel->callbacks)) {
 $channel->close();
 $channel->close();
 
+function enviaFilaFalha($strMessage)
+{
+    $arrCongiYaml = Yaml::parse(file_get_contents('application.yml'));
+    $sendRabbitMQ = new SendRabbitMQ();
+    $sendRabbitMQ->send($arrCongiYaml['queue']['recebe'], $strMessage);
+}
+
+function enviaFilaCarga($strMessage)
+{
+    $arrCongiYaml = Yaml::parse(file_get_contents('application.yml'));
+    $sendRabbitMQ = new SendRabbitMQ();
+    $sendRabbitMQ->send($arrCongiYaml['queue']['carga'], $strMessage);
+}
+
 function consultaCEP($strCEP)
 {
     $arrCongiYaml = Yaml::parse(file_get_contents('application.yml'));
-    $strUrl = $arrCongiYaml['webservice']['correio'] . '/' . $strCEP .  '/json';
+    $strUrl = $arrCongiYaml['webservice']['correio'] . '/' . $strCEP . '/json';
 
     $curl = curl_init();
     $arrOptionsCurl = [
