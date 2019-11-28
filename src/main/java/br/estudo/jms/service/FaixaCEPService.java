@@ -11,7 +11,7 @@ public class FaixaCEPService {
 		Map<String, List<Integer>> listaCEP = new HashMap<String, List<Integer>>();
 		// listaCEP.put("SP", Arrays.asList(1000000, 19999999)); // SP
 		// listaCEP.put("DF", Arrays.asList(70000000, 73699999)); // DF
-		listaCEP.put("DF", Arrays.asList(70000001, 72799999)); // DF
+		listaCEP.put("DF", Arrays.asList(73350200, 73350400)); // DF
 		// listaCEP.put("SP", Arrays.asList(12630000, 12689999)); // DF
 		return listaCEP;
 	}

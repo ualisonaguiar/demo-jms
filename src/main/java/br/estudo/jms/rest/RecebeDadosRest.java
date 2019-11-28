@@ -17,6 +17,6 @@ public class RecebeDadosRest {
 	@GetMapping
 	public String teste() throws JsonProcessingException {
 		cepService.enviarCEPLote();
-		return "Teste de envio....";
+		return "Teste de envio 000 090 0....";
 	}
 }
