@@ -1,6 +1,5 @@
 package br.estudo.jms.rabbitmq.consumer;
 
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +13,7 @@ public class RecebeCEPConsumer {
 
 	OrderQueueSender sendQueue;
 
-	@RabbitListener(queues = { "${queue.recebe.cep.name}" })
+	// @RabbitListener(queues = { "${queue.recebe.cep.name}" })
 	public void recebeCEP(@Payload String fileBody) throws InterruptedException {
 		classificaEnviaCEP(fileBody);
 	}

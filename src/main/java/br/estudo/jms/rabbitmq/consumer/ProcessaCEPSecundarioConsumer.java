@@ -4,7 +4,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Arrays;
 
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -35,7 +34,7 @@ public class ProcessaCEPSecundarioConsumer {
 	@Value("${queue.carga.banco.name}")
 	private String queueCargaBanco;
 
-	@RabbitListener(queues = { "${queue.cluster.secundario.name}" })
+	// @RabbitListener(queues = { "${queue.cluster.secundario.name}" })
 	public void receberCep(@Payload String mensagem) throws URISyntaxException, InterruptedException {
 		consultaCEP(mensagem);
 	}

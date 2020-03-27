@@ -17,7 +17,7 @@ public class EnviaCEPServiceTest {
 
 	@Test
 	public void teste() {
-		assertTrue(enviaCEPService.enviarCEPLote());
+		assertTrue(enviaCEPService.enviarCEPLote1());
 	}
 
 }
