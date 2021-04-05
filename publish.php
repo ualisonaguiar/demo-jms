@@ -13,4 +13,7 @@ use Symfony\Component\Yaml\Yaml;
 $arrCongiYaml = Yaml::parse(file_get_contents('application.yml'));
 
 $sendRabbitMQ = new SendRabbitMQ();
-$sendRabbitMQ->send($arrCongiYaml['queue']['recebe'], '0101110
+$sendRabbitMQ->send($arrCongiYaml['queue']['recebe'], '0101110');
+$sendRabbitMQ->send($arrCongiYaml['queue']['recebe'], '0101110');
+$sendRabbitMQ->send($arrCongiYaml['queue']['recebe'], '0101110');
+$sendRabbitMQ->send($arrCongiYaml['queue']['recebe'], '0101110');
