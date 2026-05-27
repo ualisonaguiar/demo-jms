@@ -4,7 +4,7 @@
     "type": "project",
     "require": {
         "php-amqplib/php-amqplib": "^2.10",
-        "symfony/yaml": "^4.3"
+        "symfony/yaml": "^5.4"
     },
     "authors": [
         {
